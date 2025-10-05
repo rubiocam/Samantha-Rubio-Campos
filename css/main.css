@@ -1,0 +1,28 @@
+body {
+  background: #fdfaf4;
+  font-family: 'Amatic SC', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#book {
+  width: 800px;
+  height: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.page {
+  background: #fffbea;
+  padding: 2rem;
+  font-size: 1.5rem;
+  background-image: url('https://i.imgur.com/6PjvP6Z.jpg'); /* paper texture example */
+  background-size: cover;
+  position: relative;
+}
+
+.page h2 {
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 1rem;
+}
