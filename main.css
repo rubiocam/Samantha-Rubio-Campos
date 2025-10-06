@@ -4,16 +4,21 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-image: url(images/corkboard.jpg);
   color: white;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* stack gallery + footer */
+  min-height: 100vh;
 }
 
 .gallery {
+  flex: 1; /* pushes footer down if short */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
@@ -54,11 +59,19 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* .coming-soon {
+.coming-soon {
   text-align: center;
   padding: 40px;
   font-size: 1.5rem;
   font-style: italic;
   font-weight: bold;
   color: #fff;
-} */
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: white;
+}
