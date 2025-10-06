@@ -45,3 +45,11 @@ body {
   color: #fff;
 }
 
+.item a {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.item a:hover {
+  transform: scale(1.05);
+}
