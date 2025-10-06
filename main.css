@@ -1,27 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: #fdfaf4;
-  font-family: 'Amatic SC', cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #b28d5d; /* corkboard color like screenshot */
+  color: white;
+  min-height: 100vh;
 }
 
-#book {
-  width: 800px;
-  height: 500px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
 }
 
-.page {
-  background: #fffbea;
-  padding: 2rem;
+.item {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.item p {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.coming-soon {
+  text-align: center;
+  padding: 40px;
   font-size: 1.5rem;
-  background-size: cover;
-  position: relative;
+  font-style: italic;
+  font-weight: bold;
+  color: #fff;
 }
 
-.page h2 {
-  font-family: 'Pacifico', cursive;
-  margin-bottom: 1rem;
-}
