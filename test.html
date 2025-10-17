@@ -1,77 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Test Page</title>
   <style>
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f1f1f1;
-      font-family: sans-serif;
-      overflow: hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#f1f1f1;
+      font-family:sans-serif;
+      overflow:hidden;
     }
 
     #book {
-      position: relative;
-      width: 300px;
-      height: 400px;
-      perspective: 2000px;
+      position:relative;
+      width:360px;
+      height:480px;
+      perspective:2000px;
     }
 
     .page {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: white;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-      transform-origin: left;
-      transition: transform 0.6s ease;
-      backface-visibility: hidden;
-      overflow: hidden;
-      padding: 1rem;
-      cursor: grab;
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:white;
+      border:1px solid #ccc;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      transform-origin:left center;
+      transition:transform 0.6s ease;
+      backface-visibility:hidden;
+      overflow:hidden;
+      padding:1rem;
+      cursor:grab;
+      user-select:none;
+      touch-action:none;
     }
 
-    #page1 { z-index: 3; }
-    #page2 { z-index: 2; }
-    #page3 { z-index: 1; }
+    #page1 { z-index:3; }
+    #page2 { z-index:2; }
+    #page3 { z-index:1; }
 
     .page.flipped {
       transform: rotateY(-180deg);
-      z-index: 0 !important;
+      z-index:0 !important;
     }
 
-    /* Arrow buttons */
     .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      border: none;
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 50%;
-      user-select: none;
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.6);
+      color:white;
+      border:none;
+      font-size:1.8rem;
+      padding:0.4rem 0.7rem;
+      cursor:pointer;
+      border-radius:50%;
+      user-select:none;
     }
-
-    .arrow:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    #prev {
-      left: -60px;
-    }
-
-    #next {
-      right: -60px;
-    }
+    #prev { left:-70px; }
+    #next { right:-70px; }
+    .arrow:hover { background:rgba(0,0,0,0.85); }
   </style>
 </head>
 <body>
@@ -89,66 +81,191 @@
       <p>You can keep adding more pages like this!</p>
     </div>
 
-    <!-- Navigation arrows -->
     <button class="arrow" id="prev">&#8592;</button>
     <button class="arrow" id="next">&#8594;</button>
   </div>
 
   <script>
-    const pages = Array.from(document.querySelectorAll(".page"));
+    const pages = Array.from(document.querySelectorAll('.page'));
     let current = 0;
 
-    // Handle arrow buttons
-    document.getElementById("next").addEventListener("click", nextPage);
-    document.getElementById("prev").addEventListener("click", prevPage);
+    // Arrow button handlers
+    document.getElementById('next').addEventListener('click', nextPage);
+    document.getElementById('prev').addEventListener('click', prevPage);
 
     function nextPage() {
       if (current < pages.length) {
-        pages[current].classList.add("flipped");
+        pages[current].classList.add('flipped');
         current++;
       }
     }
-
     function prevPage() {
       if (current > 0) {
         current--;
-        pages[current].classList.remove("flipped");
+        pages[current].classList.remove('flipped');
       }
     }
 
-    // --- Drag to flip ---
-    let isDragging = false;
+    // ----- Dragging (mouse + touch) -----
+    let activePage = null;    // DOM node being dragged (must be pages[current])
     let startX = 0;
+    let dragging = false;
 
-    pages.forEach((page, index) => {
-      page.addEventListener("mousedown", e => {
-        isDragging = true;
-        startX = e.clientX;
-        page.style.transition = "none"; // disable smooth animation while dragging
-      });
+    // Helper to get x from mouse or touch event
+    function getClientX(e) {
+      if (e.touches && e.touches.length) return e.touches[0].clientX;
+      return e.clientX;
+    }
 
-      window.addEventListener("mousemove", e => {
-        if (!isDragging) return;
-        const dx = e.clientX - startX;
-        const rotation = Math.max(Math.min(dx / 3, 0), -180); // clamp between 0 and -180
-        page.style.transform = `rotateY(${rotation}deg)`;
-      });
+    // Start drag only if clicked/touched on the current top page
+    document.addEventListener('mousedown', startDrag);
+    document.addEventListener('touchstart', startDrag, {passive:false});
 
-      window.addEventListener("mouseup", e => {
-        if (!isDragging) return;
-        isDragging = false;
-        page.style.transition = "transform 0.6s ease";
+    function startDrag(e) {
+      const pageEl = e.target.closest('.page');
+      if (!pageEl) return;
+      const pageIndex = pages.indexOf(pageEl);
+      // Only allow dragging the current (top) page forwards
+      if (pageIndex !== current) return;
 
-        const dx = e.clientX - startX;
-        if (dx < -80 && index === current) {
-          // flipped enough
-          nextPage();
-        } else {
-          // snap back
-          page.style.transform = "";
-        }
-      });
+      e.preventDefault();
+      activePage = pageEl;
+      dragging = true;
+      startX = getClientX(e);
+
+      // Temporarily disable transition while dragging for immediate response
+      activePage.style.transition = 'none';
+      // change cursor
+      activePage.style.cursor = 'grabbing';
+    }
+
+    // Move
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('touchmove', onMove, {passive:false});
+
+    function onMove(e) {
+      if (!dragging || !activePage) return;
+      e.preventDefault();
+      const x = getClientX(e);
+      const dx = x - startX; // negative when dragging left (forward)
+      // Clamp rotation to [0 .. -180]
+      const rotation = Math.max(Math.min(dx / 2, 0), -180);
+      activePage.style.transform = `rotateY(${rotation}deg)`;
+    }
+
+    // End drag
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    function endDrag(e) {
+      if (!dragging || !activePage) return;
+      dragging = false;
+      activePage.style.transition = 'transform 0.6s ease';
+      activePage.style.cursor = 'grab';
+      const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : e.clientX;
+      const dx = endX - startX;
+
+      // If dragged left far enough, flip page; otherwise snap back
+      const threshold = -80; // pixels (negative because left drag -> negative dx)
+      if (dx < threshold) {
+        // complete flip
+        nextPage();
+        // clear inline transform (the .flipped class controls final transform)
+        activePage.style.transform = '';
+      } else {
+        // snap back to original
+        activePage.style.transform = '';
+      }
+
+      activePage = null;
+    }
+
+    // Improve UX: allow flipping backwards by dragging right on the leftmost flipped page
+    // (optional) — user can drag the last flipped page from the left side to unflip.
+    // We'll add mousedown handling on the left side of the book for the flipped page:
+    document.addEventListener('mousedown', startReverseDrag);
+    document.addEventListener('touchstart', startReverseDrag, {passive:false});
+
+    function startReverseDrag(e) {
+      const pageEl = e.target.closest('.page');
+      if (!pageEl) return;
+      const pageIndex = pages.indexOf(pageEl);
+      // Only allow reverse drag if this is the page immediately before 'current' (i.e., already flipped)
+      if (pageIndex !== current - 1) return;
+
+      // Also require that the pointer started on the left half of the book (so user intends to pull it back)
+      const rect = pageEl.getBoundingClientRect();
+      const clientX = getClientX(e);
+      if (clientX > rect.left + 40) return; // require near spine side
+
+      // initiate reverse drag (we'll reuse activePage, but reverse logic in end handler)
+      e.preventDefault();
+      activePage = pageEl;
+      dragging = true;
+      startX = clientX;
+      activePage.style.transition = 'none';
+      activePage.style.cursor = 'grabbing';
+
+      // Modify move/end behavior slightly: rotate from -180 towards 0 as user drags right
+      // The onMove handler already uses dx = x - startX; for reverse drag dx will be positive.
+    }
+
+    // In endDrag we already handle dx threshold negative; add reverse threshold check:
+    // (we'll modify endDrag a bit to handle both)
+    // Update endDrag to handle reverse: if activePage index === current-1 and dx > +80, unflip.
+    // (We update the function above accordingly.)
+    // For clarity we've implemented the check below (replacing previous endDrag):
+    document.removeEventListener('mouseup', endDrag);
+    document.removeEventListener('touchend', endDrag);
+
+    document.addEventListener('mouseup', function(e) {
+      if (!dragging || !activePage) return;
+      dragging = false;
+      activePage.style.transition = 'transform 0.6s ease';
+      activePage.style.cursor = 'grab';
+      const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : e.clientX;
+      const dx = endX - startX;
+
+      const idx = pages.indexOf(activePage);
+      // Forward flip (drag left on current page)
+      if (idx === current && dx < -80) {
+        nextPage();
+        activePage.style.transform = '';
+      }
+      // Reverse flip (drag right on the last flipped page)
+      else if (idx === current - 1 && dx > 80) {
+        // unflip
+        prevPage();
+        activePage.style.transform = '';
+      } else {
+        // snap back
+        activePage.style.transform = '';
+      }
+
+      activePage = null;
     });
+
+    document.addEventListener('touchend', function(e) {
+      if (!dragging || !activePage) return;
+      dragging = false;
+      activePage.style.transition = 'transform 0.6s ease';
+      activePage.style.cursor = 'grab';
+      const end = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : (e.clientX || startX);
+      const dx = end - startX;
+      const idx = pages.indexOf(activePage);
+
+      if (idx === current && dx < -80) {
+        nextPage();
+        activePage.style.transform = '';
+      } else if (idx === current - 1 && dx > 80) {
+        prevPage();
+        activePage.style.transform = '';
+      } else {
+        activePage.style.transform = '';
+      }
+      activePage = null;
+    });
+
   </script>
 </body>
 </html>
