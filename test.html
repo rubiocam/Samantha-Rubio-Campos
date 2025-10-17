@@ -2,20 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flipbook (CSP-safe)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Page</title>
   <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #eee; }
-    #book { display: flex; gap: 1rem; perspective: 1000px; }
-    .page {
-      width: 200px; height: 260px;
-      background: white; border: 1px solid #ccc;
-      padding: 1rem;
-      transform-origin: left;
-      transition: transform 0.8s ease;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f1f1f1;
+      font-family: sans-serif;
     }
-    .flipped { transform: rotateY(-180deg); }
+
+    #book {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      perspective: 2000px;
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      transform-origin: left;
+      transition: transform 1s ease, z-index 1s;
+      backface-visibility: hidden;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    /* Give each page a slightly different offset shadow color */
+    #page1 { z-index: 3; }
+    #page2 { z-index: 2; }
+    #page3 { z-index: 1; }
+
+    .page.flipped {
+      transform: rotateY(-180deg);
+      z-index: 0 !important;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: -60px;
+      width: 100%;
+      text-align: center;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin: 0 10px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #555;
+    }
   </style>
 </head>
 <body>
@@ -32,18 +83,28 @@
       <h2>Page 3</h2>
       <p>You can keep adding more pages like this!</p>
     </div>
+
+    <div class="controls">
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+    </div>
   </div>
 
   <script>
-    const pages = document.querySelectorAll('.page');
+    const pages = Array.from(document.querySelectorAll(".page"));
     let current = 0;
-    document.addEventListener('click', () => {
+
+    document.getElementById("next").addEventListener("click", () => {
       if (current < pages.length) {
-        pages[current].classList.toggle('flipped');
+        pages[current].classList.add("flipped");
         current++;
-      } else {
-        pages.forEach(p => p.classList.remove('flipped'));
-        current = 0;
+      }
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        pages[current].classList.remove("flipped");
       }
     });
   </script>
