@@ -1,14 +1,25 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Testing Page</title>
-    <!--<link rel="stylesheet" href="main.css">-->
-
-  </head>
-</body>
-    <div id="book">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flipbook (CSP-safe)</title>
+  <style>
+    body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #eee; }
+    #book { display: flex; gap: 1rem; perspective: 1000px; }
+    .page {
+      width: 200px; height: 260px;
+      background: white; border: 1px solid #ccc;
+      padding: 1rem;
+      transform-origin: left;
+      transition: transform 0.8s ease;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .flipped { transform: rotateY(-180deg); }
+  </style>
+</head>
+<body>
+  <div id="book">
     <div class="page" id="page1">
       <h2>Page 1</h2>
       <p>This is the first page of my scrapbook!</p>
@@ -23,9 +34,18 @@
     </div>
   </div>
 
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
-  <script src="main.js"></script>
-  </body>
+  <script>
+    const pages = document.querySelectorAll('.page');
+    let current = 0;
+    document.addEventListener('click', () => {
+      if (current < pages.length) {
+        pages[current].classList.toggle('flipped');
+        current++;
+      } else {
+        pages.forEach(p => p.classList.remove('flipped'));
+        current = 0;
+      }
+    });
+  </script>
+</body>
 </html>
