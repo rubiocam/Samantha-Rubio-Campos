@@ -2,9 +2,12 @@
   max-width: 500px;
   height: auto;
   align-content: center;
+  align-self: center;
 }
 
 .container
 {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  align-content: center;
+  align-self: center;
 }
