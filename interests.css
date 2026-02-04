@@ -23,7 +23,7 @@
   font-family: cursive;
 }
 
-.left-button
+/* .left-button
 {
   background-color: #04AA6D;
   border: none;
@@ -35,8 +35,6 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  margin-left: auto;
-
 }
 
 .right-button
@@ -51,5 +49,4 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  margin-right: auto;
-}
+} */
