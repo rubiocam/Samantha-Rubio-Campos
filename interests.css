@@ -35,6 +35,8 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  margin-left: auto;
+
 }
 
 .right-button
@@ -49,4 +51,5 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  margin-right: auto;
 }
