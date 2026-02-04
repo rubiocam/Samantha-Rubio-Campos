@@ -30,13 +30,12 @@ function plusDivs(n) {
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("slides");
-  var y = document.getElementsByClassName("container");
+  var y = document.getElementsByClassName("header");
   var z = document.getElementsByClassName("flavortext");
 
   if (n > x.length) {
     slideIndex = 1
   }
-
   
   if (n < 1) {
     slideIndex = x.length;
@@ -51,4 +50,5 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";
   y[slideIndex-1].style.display = "block";
   z[slideIndex-1].style.display = "block";
+
 }
