@@ -1,127 +1,140 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Schoolbell&display=swap");
+
+/* Google font (handwritten vibe like your example) */
+@import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Schoolbell", cursive;
-  font-size: 2rem;
   margin: 0;
   padding: 2rem;
+  font-family: "Schoolbell", cursive;
+  background: #eee;
 }
 
-h1 {
-  margin: 0;
-  font-size: 3.8rem;
-}
-
-figure {
-  margin: 0;
-  background: rgba(173, 216, 230, 0.8);
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-}
-
-p {
-  margin: 0;
-  padding: 1.8rem;
-  background-color: aliceBlue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  z-index: 1;
+/* ===== BOARD CONTAINER ===== */
+.board {
   position: relative;
-}
-
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.grid {
-  --verticalPadding: 2rem;
-  --overlap: 6rem;
-  display: grid;
-  /* 6/5 grid from my compound grid generator: https://codepen.io/michellebarker/full/zYOMYWv */
-  grid-template-columns: 5fr 1fr 4fr 2fr 3fr 3fr 2fr 4fr 1fr 5fr;
-  grid-template-rows: [header-start] auto [fig1-start] 3rem [header-end] minmax(var(--verticalPadding), auto) [p1-start] minmax(0, auto) [p1-end] minmax(var(--verticalPadding), auto) [fig2-start] var(--overlap) [fig1-end] minmax(var(--verticalPadding), auto) [p2-start] minmax(0, auto) [p2-end] minmax(var(--verticalPadding), auto) [fig3-start] var(--overlap) [fig2-end] minmax(var(--verticalPadding), auto) [p3-start] minmax(0, auto) [p3-end] minmax(var(--verticalPadding), auto) [fig3-end];
-  grid-auto-rows: minmax(var(--verticalPadding), auto);
-  gap: 1rem;
-  max-width: 75rem;
+  max-width: 1000px;
+  height: 700px;
   margin: 0 auto;
-  align-items: center;
-  background: url(images/corkboard.jpg)}
-.grid::before, .grid::after {
-  content: "";
-  display: block;
+  background: url("images/lightblue_gingham.png");
+  background-size: cover;
+  border: 4px solid #333;
+  overflow: hidden;
 }
-.grid::before {
-  /* background: left center/20rem no-repeat url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85648/paint-splatter-3.svg); */
-  grid-column: 3/-3;
-  grid-row: 9/span 4;
-  width: 100%;
-  height: 400px;
-  position: relative;
+
+/* ===== TITLE ===== */
+.title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1.2rem;
+  font-size: 1.8rem;
+  box-shadow: -2px 2px 6px rgba(0,0,0,0.25);
+}
+
+/* ===== IMAGES ===== */
+.item {
+  position: absolute;
+  display: block;
+  max-width: 220px;
+  height: auto;
+  box-shadow: -4px 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Individual placements */
+
+.bracelet {
+  top: 30px;
+  left: 40px;
+  transform: rotate(-5deg);
+}
+
+.star {
+  top: 150px;
+  left: 260px;
+  transform: rotate(-12deg);
+  max-width: 140px;
+}
+
+.shirt {
+  top: 40px;
+  right: 40px;
+  max-width: 260px;
+}
+
+.cat {
+  bottom: 140px;
+  left: 40px;
+  max-width: 160px;
+}
+
+.person {
+  bottom: 0;
+  left: 220px;
+  max-width: 260px;
+}
+
+.penguin {
+  bottom: 0;
+  right: 60px;
+  max-width: 160px;
+}
+
+/* ===== LABELS (sticky notes) ===== */
+.label {
+  position: absolute;
+  background: white;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: -3px 3px 8px rgba(0,0,0,0.25);
   z-index: 2;
 }
 
-header {
-  grid-column: 1/-2;
-  grid-row: header;
-  padding: 2rem;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  text-align: center;
-  background-color: aliceBlue;
+/* Individual label placement */
+
+.leadership {
+  top: 230px;
+  left: 10px;
+  transform: rotate(-2deg);
 }
 
-.fig--1 {
-  grid-column: span 5/-1;
-  grid-row: fig1;
-}
-.fig--2 {
-  grid-column: 1/span 7;
-  grid-row: fig2;
-}
-.fig--3 {
-  grid-column: span 5/-2;
-  grid-row: fig3;
-}
-.fig--3 img {
-  object-position: left;
+.projects {
+  top: 200px;
+  right: 260px;
+  transform: rotate(1deg);
 }
 
-p:first-of-type {
-  grid-column: 3/span 4;
-  grid-row: p1;
-  z-index: 1;
+.art {
+  top: 280px;
+  right: 70px;
   transform: rotate(-1deg);
 }
-p:nth-of-type(2) {
-  grid-column: span 3/-3;
-  grid-row: p2;
-  transform: rotate(0.8deg);
-}
-p:nth-of-type(3) {
-  grid-column: 2/span 4;
-  grid-row: p3;
-  transform: rotate(-0.7deg);
+
+.about {
+  bottom: 20px;
+  left: 80px;
+  transform: rotate(-2deg);
 }
 
-/* Aspect ratio – https://css-tricks.com/aspect-ratio-boxes/ */
-[style*="--aspect-ratio"] {
-  position: relative;
+.interests {
+  bottom: 20px;
+  right: 200px;
+  transform: rotate(1deg);
 }
 
-[style*="--aspect-ratio"]::before {
-  content: "";
-  display: block;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
+/* ===== OPTIONAL: layering tweaks ===== */
+.person {
+  z-index: 1;
 }
 
-[style*="--aspect-ratio"] > :first-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+.label,
+.title {
+  z-index: 3;
 }
