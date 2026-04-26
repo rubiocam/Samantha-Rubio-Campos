@@ -50,14 +50,13 @@ img {
   max-width: 75rem;
   margin: 0 auto;
   align-items: center;
-  background: left top/40rem no-repeat url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85648/paint-splatter-1.svg), right bottom/40rem no-repeat url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85648/paint-splatter-2.svg);
-}
+  background: url(images/corkboard.jpg)}
 .grid::before, .grid::after {
   content: "";
   display: block;
 }
 .grid::before {
-  background: left center/20rem no-repeat url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85648/paint-splatter-3.svg);
+  /* background: left center/20rem no-repeat url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85648/paint-splatter-3.svg); */
   grid-column: 3/-3;
   grid-row: 9/span 4;
   width: 100%;
