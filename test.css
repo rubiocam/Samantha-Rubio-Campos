@@ -75,7 +75,7 @@ img {
     [p4-start] minmax(0, auto)
     [p4-end] minmax(var(--verticalPadding), auto)
 
-    [fig4-end];
+    [fig4-end] minmax(var(--verticalPadding), auto);
     
 
   grid-auto-rows: minmax(var(--verticalPadding), auto);
@@ -136,8 +136,8 @@ header {
   grid-row: fig4;
 }
 
-.fig--3 img {
-  object-position: left;
+.fig--4 img {
+  object-position: right;
 }
 
 /* Text boxes (based on order) */
