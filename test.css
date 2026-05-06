@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @import url("https://fonts.googleapis.com/css?family=Schoolbell&display=swap");
 
 * {
@@ -10,7 +11,6 @@ body {
   font-size: 2rem;
   margin: 0;
   padding: 2rem;
-  background: white;
 }
 
 h1 {
@@ -18,68 +18,19 @@ h1 {
   font-size: 3.8rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 0.75rem;
-  background: url(images/lightblue_gingham.png);
-}
-
-.title {
-  grid-column: 1 / span 3;
-  padding: 2rem;
-  background: aliceblue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
-.pair {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 1rem;
-  align-items: center;
-}
-
-.pair--about {
-  grid-column: 4;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.pair--art {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-}
-
-.pair--interests {
-  grid-column: 2 / span 2;
-  grid-row: 3;
-}
-
-.pair--projects {
-  grid-column: 1 / span 2;
-  grid-row: 4;
-}
-
-.linkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem 1.5rem;
-  background-color: aliceblue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
-}
-
 figure {
   margin: 0;
   background: rgba(173, 216, 230, 0.8);
   box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+p {
+  margin: 0;
+  padding: 1.8rem;
+  background-color: aliceblue;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 img {
@@ -89,6 +40,108 @@ img {
   display: block;
 }
 
+.grid {
+  --verticalPadding: 2rem;
+  --overlap: 6rem;
+
+  display: grid;
+
+  /* Grid layout */
+  grid-template-columns: 5fr 1fr 4fr 2fr 3fr 3fr 2fr 4fr 1fr 5fr;
+
+  grid-template-rows:
+    [header-start] auto
+    [fig1-start] 3rem
+    [header-end] minmax(var(--verticalPadding), auto)
+    [p1-start] minmax(0, auto)
+    [p1-end] minmax(var(--verticalPadding), auto)
+    [fig2-start] var(--overlap)
+    [fig1-end] minmax(var(--verticalPadding), auto)
+    [p2-start] minmax(0, auto)
+    [p2-end] minmax(var(--verticalPadding), auto)
+    [fig3-start] var(--overlap)
+    [fig2-end] minmax(var(--verticalPadding), auto)
+    [p3-start] minmax(0, auto)
+    [p3-end] minmax(var(--verticalPadding), auto)
+    [fig3-end];
+
+  grid-auto-rows: minmax(var(--verticalPadding), auto);
+
+  gap: 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  align-items: center;
+
+  background: url(images/lightblue_gingham.png);
+}
+
+/* Decorative pseudo elements */
+.grid::before,
+.grid::after {
+  content: "";
+  display: block;
+}
+
+.grid::before {
+  grid-column: 3 / -3;
+  grid-row: 9 / span 4;
+  width: 100%;
+  height: 400px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+header {
+  grid-column: 1 / -2;
+  grid-row: header;
+  padding: 2rem;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: aliceblue;
+  z-index: 1;
+}
+
+/* Figures */
+.fig--1 {
+  grid-column: span 5 / -1;
+  grid-row: fig1;
+}
+
+.fig--2 {
+  grid-column: 1 / span 7;
+  grid-row: fig2;
+}
+
+.fig--3 {
+  grid-column: span 5 / -2;
+  grid-row: fig3;
+}
+
+.fig--3 img {
+  object-position: left;
+}
+
+/* Text boxes (based on order) */
+p:first-of-type {
+  grid-column: 3 / span 4;
+  grid-row: p1;
+  transform: rotate(-1deg);
+}
+
+p:nth-of-type(2) {
+  grid-column: span 3 / -3;
+  grid-row: p2;
+  transform: rotate(0.8deg);
+}
+
+p:nth-of-type(3) {
+  grid-column: 2 / span 4;
+  grid-row: p3;
+  transform: rotate(-0.7deg);
+}
+
+/* Aspect ratio helper */
 [style*="--aspect-ratio"] {
   position: relative;
 }
@@ -103,12 +156,5 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.fig a {
-  display: block;
-  width: 100%;
   height: 100%;
 }
