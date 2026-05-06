@@ -20,62 +20,60 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background: url(images/lightblue_gingham.png);
 }
 
 .title {
   grid-column: 1 / span 3;
-  grid-row: 1;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   background: aliceblue;
   box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-.linkbox--about {
-  grid-column: 4;
-  grid-row: 1;
-}
-
 .pair {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: center;
 }
 
-.pair .linkbox {
-  align-self: center;
+.pair--about {
+  grid-column: 4;
+  grid-row: 1;
+  justify-self: end;
 }
 
 .pair--art {
   grid-column: 1 / span 2;
   grid-row: 2;
-  align-self: start;
-}
-
-.pair--headshot {
-  grid-column: 3 / span 2;
-  grid-row: 2 / span 2;
-  align-self: start;
-  justify-self: end;
 }
 
 .pair--interests {
   grid-column: 2 / span 2;
   grid-row: 3;
-  align-self: start;
 }
 
 .pair--projects {
   grid-column: 1 / span 2;
   grid-row: 4;
-  align-self: start;
+}
+
+.linkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.5rem;
+  background-color: aliceblue;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
 }
 
 figure {
@@ -89,18 +87,6 @@ img {
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.linkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem 1.5rem;
-  background-color: aliceblue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
 }
 
 [style*="--aspect-ratio"] {
