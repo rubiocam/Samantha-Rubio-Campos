@@ -17,10 +17,73 @@ h1 {
   font-size: 3.8rem;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 5fr 1fr 4fr 2fr 3fr 3fr 2fr 4fr 1fr 5fr;
+  gap: 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  background: url(images/lightblue_gingham.png);
+  padding-bottom: 2rem;
+}
+
+header {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pair--about {
+  grid-column: 8 / -1;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+}
+
+.pair--art {
+  grid-column: 1 / span 5;
+  grid-row: 2;
+  align-self: start;
+}
+
+.pair--interests {
+  grid-column: 4 / span 6;
+  grid-row: 4;
+  align-self: start;
+}
+
+.pair--projects {
+  grid-column: 2 / span 7;
+  grid-row: 5;
+  align-self: start;
+}
+
 figure {
   margin: 0;
   background: rgba(173, 216, 230, 0.8);
   box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.linkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.5rem;
+  background-color: aliceblue;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  z-index: 2;
 }
 
 img {
@@ -30,110 +93,6 @@ img {
   display: block;
 }
 
-.grid {
-  --verticalPadding: 2rem;
-  --overlap: 6rem;
-  display: grid;
-  grid-template-columns: 5fr 1fr 4fr 2fr 3fr 3fr 2fr 4fr 1fr 5fr;
-  grid-template-rows:
-    [header-start] auto
-    [fig1-start] 3rem
-    [header-end] minmax(var(--verticalPadding), auto)
-    [p1-start] minmax(0, auto)
-    [p1-end] minmax(var(--verticalPadding), auto)
-    [fig2-start] var(--overlap)
-    [fig1-end] minmax(var(--verticalPadding), auto)
-    [p2-start] minmax(0, auto)
-    [p2-end] minmax(var(--verticalPadding), auto)
-    [fig3-start] var(--overlap)
-    [fig2-end] minmax(var(--verticalPadding), auto)
-    [p3-start] minmax(0, auto)
-    [p3-end] minmax(var(--verticalPadding), auto)
-    [fig4-start] var(--overlap)
-    [fig3-end] minmax(var(--verticalPadding), auto)
-    [p4-start] minmax(0, auto)
-    [p4-end] minmax(var(--verticalPadding), auto)
-    [fig4-end];
-  grid-auto-rows: minmax(var(--verticalPadding), auto);
-  gap: 1rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  align-items: center;
-  background: url(images/lightblue_gingham.png);
-}
-
-header {
-  grid-column: 1 / -2;
-  grid-row: header;
-  padding: 2rem;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  text-align: center;
-  background-color: aliceblue;
-}
-
-.fig--1 {
-  grid-column: span 5 / -1;
-  grid-row: fig1;
-}
-
-.fig--2 {
-  grid-column: 1 / span 7;
-  grid-row: fig2;
-}
-
-.fig--3 {
-  grid-column: span 5 / -2;
-  grid-row: fig3;
-}
-
-.fig--3 img {
-  object-position: left;
-}
-
-.fig--4 {
-  grid-column: 1 / span 7;
-  grid-row: fig4;
-}
-
-.linkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.8rem;
-  background-color: aliceblue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.linkbox--about {
-  grid-column: 10 / span 1;
-  grid-row: header;
-}
-
-.linkbox--art {
-  grid-column: 1 / span 2;
-  grid-row: p1;
-  transform: rotate(-1deg);
-}
-
-.linkbox--projects {
-  grid-column: 2 / span 3;
-  grid-row: p3;
-  transform: rotate(-1deg);
-}
-
-.linkbox--interests {
-  grid-column: 6 / span 3;
-  grid-row: p2;
-  transform: rotate(0.8deg);
-}
-
-/* Aspect ratio helper */
 [style*="--aspect-ratio"] {
   position: relative;
 }
