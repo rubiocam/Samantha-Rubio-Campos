@@ -53,17 +53,30 @@ img {
     [header-start] auto
     [fig1-start] 3rem
     [header-end] minmax(var(--verticalPadding), auto)
+    
     [p1-start] minmax(0, auto)
     [p1-end] minmax(var(--verticalPadding), auto)
+    
     [fig2-start] var(--overlap)
     [fig1-end] minmax(var(--verticalPadding), auto)
+    
     [p2-start] minmax(0, auto)
     [p2-end] minmax(var(--verticalPadding), auto)
+    
     [fig3-start] var(--overlap)
     [fig2-end] minmax(var(--verticalPadding), auto)
+    
     [p3-start] minmax(0, auto)
     [p3-end] minmax(var(--verticalPadding), auto)
-    [fig3-end];
+    
+    [fig4-start] var(--overlap)
+    [fig3-end] minmax(var(--verticalPadding), auto)
+    
+    [p4-start] minmax(0, auto)
+    [p4-end] minmax(var(--verticalPadding), auto)
+
+    [fig4-end];
+    
 
   grid-auto-rows: minmax(var(--verticalPadding), auto);
 
@@ -118,13 +131,18 @@ header {
   grid-row: fig3;
 }
 
+.fig--4 {
+  grid-column: 1 / span 7;
+  grid-row: fig4;
+}
+
 .fig--3 img {
   object-position: left;
 }
 
 /* Text boxes (based on order) */
 p:first-of-type {
-  grid-column: 3 / span 4;
+  grid-column: 3 / span 2;
   grid-row: p1;
   transform: rotate(-1deg);
 }
@@ -139,6 +157,12 @@ p:nth-of-type(3) {
   grid-column: 2 / span 4;
   grid-row: p3;
   transform: rotate(-0.7deg);
+}
+
+p:nth-of-type(4) {
+  grid-column: 3 / span 2;
+  grid-row: p4;
+  transform: rotate(0.7deg);
 }
 
 /* Aspect ratio helper */
