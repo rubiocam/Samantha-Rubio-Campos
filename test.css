@@ -91,6 +91,11 @@ header {
   object-position: left;
 }
 
+.fig--4 {
+  grid-column: 1 / span 7;   /* same X position */
+  grid-row: fig3;            /* lower row */
+}
+
 p:first-of-type {
   grid-column: 3/span 4;
   grid-row: p1;
@@ -124,4 +129,62 @@ p:nth-of-type(3) {
   top: 0;
   left: 0;
   height: 100%;
+}
+
+.box {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+.box p {
+  margin: 0;
+  padding: 1.8rem;
+  background-color: aliceBlue;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+/* Position the boxes instead of p:nth-of-type */
+.box--1 {
+  grid-column: 3/span 4;
+  grid-row: p1;
+  transform: rotate(-1deg);
+}
+
+.box--2 {
+  grid-column: span 3/-3;
+  grid-row: p2;
+  transform: rotate(0.8deg);
+}
+.linkbox {
+  display: block;
+  padding: 1.8rem;
+  background-color: aliceblue;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Position each one */
+.linkbox--about {
+  grid-column: 10 / span 1;
+  grid-row: header;
+}
+
+.linkbox--art {
+  grid-column: 1 / span 2;
+  grid-row: p2;
+}
+
+.linkbox--third {
+  grid-column: 2 / span 3;
+  grid-row: p3;
+  transform: rotate(-1deg);
+}
+
+.linkbox--fourth {
+  grid-column: 6 / span 3;
+  grid-row: p3;
+  transform: rotate(1deg);
 }
