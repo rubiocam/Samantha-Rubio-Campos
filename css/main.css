@@ -10,7 +10,7 @@ html, body {
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url(images/corkboard.jpg);
+  background-image: url(../images/corkboard.jpg);
   color: white;
   display: flex;
   flex-direction: column; /* stack gallery + footer */
