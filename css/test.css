@@ -20,17 +20,16 @@ h1 {
 
 figure {
   margin: 0;
-  background: rgba(173, 216, 230, 0.8);
   box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
 }
 
 p {
   margin: 0;
-  padding: 1.8rem;
   background-color: aliceblue;
   box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
+  padding: 0;
 }
 
 img {
@@ -45,46 +44,41 @@ img {
   --overlap: 6rem;
 
   display: grid;
-
-  /* Grid layout */
   grid-template-columns: 5fr 1fr 4fr 2fr 3fr 3fr 2fr 4fr 1fr 5fr;
 
   grid-template-rows:
     [header-start] auto
     [fig1-start] 3rem
     [header-end] minmax(var(--verticalPadding), auto)
-    
+
     [p1-start] minmax(0, auto)
     [p1-end] minmax(var(--verticalPadding), auto)
-    
+
     [fig2-start] var(--overlap)
     [fig1-end] minmax(var(--verticalPadding), auto)
-    
+
     [p2-start] minmax(0, auto)
     [p2-end] minmax(var(--verticalPadding), auto)
-    
+
     [fig3-start] var(--overlap)
     [fig2-end] minmax(var(--verticalPadding), auto)
-    
+
     [p3-start] minmax(0, auto)
     [p3-end] minmax(var(--verticalPadding), auto)
-    
+
     [fig4-start] var(--overlap)
     [fig3-end] minmax(var(--verticalPadding), auto)
-    
+
     [p4-start] minmax(0, auto)
     [p4-end] minmax(var(--verticalPadding), auto)
 
     [fig4-end] minmax(var(--verticalPadding), auto);
-    
 
   grid-auto-rows: minmax(var(--verticalPadding), auto);
-
   gap: 1rem;
   max-width: 75rem;
   margin: 0 auto;
   align-items: center;
-
   background: url(../images/lightblue_gingham.png);
 }
 
@@ -140,7 +134,7 @@ header {
   object-position: right;
 }
 
-/* Text boxes (based on order) */
+/* Text boxes */
 p:first-of-type {
   grid-column: 3 / span 2;
   grid-row: p1;
@@ -160,9 +154,27 @@ p:nth-of-type(3) {
 }
 
 p:nth-of-type(4) {
-  grid-column: 3 / span -2;
+  grid-column: 3 / span 4;
   grid-row: p4;
   transform: rotate(0.7deg);
+}
+
+/* Button link inside the p */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1.8rem;
+  background-color: aliceblue;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #dfefff;
+  transform: scale(1.03);
 }
 
 /* Aspect ratio helper */
@@ -181,4 +193,5 @@ p:nth-of-type(4) {
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
 }
