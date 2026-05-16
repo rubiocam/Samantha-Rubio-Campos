@@ -91,7 +91,7 @@ img {
   padding: 1rem;
 }
 
-/* Decorative element */
+/* Decorative elements */
 .grid::before,
 .grid::after {
   content: "";
@@ -153,14 +153,14 @@ header {
 }
 
 .fig--4 {
-  grid-column: 1 / span 7;
+  grid-column: 1 / span 5;
   grid-row: fig4;
 
-  transform: translateY(-1.5rem);
+  transform: translateY(-1rem);
 }
 
 .fig--4 img {
-  object-position: right;
+  object-position: center;
 }
 
 /* =========================
@@ -168,34 +168,34 @@ header {
 ========================= */
 
 p:first-of-type {
-  grid-column: 3 / span 2;
+  grid-column: 5 / span 2;
   grid-row: p1;
-
-  transform: rotate(-1deg) translateY(-1rem);
+  justify-self: start;
+  transform: rotate(-1deg) translate(-1rem, 0.5rem);
 }
 
 p:nth-of-type(2) {
   grid-column: span 3 / -3;
   grid-row: p2;
 
-  transform: rotate(0.8deg) translateY(-2rem);
+  transform: rotate(0.8deg) translateY(-1rem);
 }
 
 p:nth-of-type(3) {
-  grid-column: 2 / span 4;
+  grid-column: 2 / span 3;
   grid-row: p3;
 
-  transform: rotate(-0.7deg) translateY(-1rem);
+  transform: rotate(-0.7deg) translate(-1rem, -0.5rem);
 
   position: relative;
   z-index: 5;
 }
 
 p:nth-of-type(4) {
-  grid-column: 7 / span 2;
+  grid-column: 5 / span 2;
   grid-row: p4;
 
-  transform: rotate(0.7deg) translateY(-1rem);
+  transform: rotate(0.7deg) translate(-2rem, -1rem);
 }
 
 /* =========================
@@ -206,7 +206,7 @@ p:nth-of-type(4) {
   display: block;
   width: 100%;
 
-  padding: 1.2rem;
+  padding: 1rem;
 
   background-color: aliceblue;
   color: black;
@@ -216,7 +216,8 @@ p:nth-of-type(4) {
 
   transition: all 0.3s ease;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .btn:hover {
@@ -225,7 +226,7 @@ p:nth-of-type(4) {
   transform: scale(1.05);
 }
 
-/* extra protection for projects button */
+/* Keeps projects clickable */
 p:nth-of-type(3) .btn {
   position: relative;
   z-index: 10;
