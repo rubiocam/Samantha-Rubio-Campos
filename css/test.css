@@ -10,7 +10,7 @@ body {
   font-family: "Schoolbell", cursive;
   font-size: 2rem;
   margin: 0;
-  padding: 2rem;
+  padding: rem;
   background-color: #e9e9e9;
 }
 
@@ -206,7 +206,7 @@ p:nth-of-type(4) {
   display: block;
   width: 100%;
 
-  padding: 1rem;
+  padding: 3rem;
 
   background-color: aliceblue;
   color: black;
@@ -216,7 +216,7 @@ p:nth-of-type(4) {
 
   transition: all 0.3s ease;
 
-  font-size: 1rem;
+  font-size: 2.5rem;
   line-height: 1.4;
 }
 
