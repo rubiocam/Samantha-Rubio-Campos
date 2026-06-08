@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 @import url("https://fonts.googleapis.com/css?family=Schoolbell&display=swap");
 
 * {
@@ -7,252 +5,134 @@
 }
 
 body {
-  font-family: "Schoolbell", cursive;
-  font-size: 2rem;
   margin: 0;
-  padding: rem;
-  background-color: #e9e9e9;
-}
-
-h1 {
-  margin: 0;
-  font-size: 3.8rem;
-}
-
-figure {
-  margin: 0;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-  background-color: aliceblue;
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 2;
-}
-
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.grid {
-  --verticalPadding: 1rem;
-  --overlap: 3rem;
-
+  min-height: 100vh;
   display: grid;
-
-  grid-template-columns:
-    5fr 1fr 4fr 2fr 3fr
-    3fr 2fr 4fr 1fr 5fr;
-
-  grid-template-rows:
-    [header-start] auto
-    [fig1-start] 1rem
-    [header-end] minmax(var(--verticalPadding), auto)
-
-    [p1-start] minmax(0, auto)
-    [p1-end] minmax(var(--verticalPadding), auto)
-
-    [fig2-start] var(--overlap)
-    [fig1-end] minmax(var(--verticalPadding), auto)
-
-    [p2-start] minmax(0, auto)
-    [p2-end] minmax(var(--verticalPadding), auto)
-
-    [fig3-start] var(--overlap)
-    [fig2-end] minmax(var(--verticalPadding), auto)
-
-    [p3-start] minmax(0, auto)
-    [p3-end] minmax(var(--verticalPadding), auto)
-
-    [fig4-start] var(--overlap)
-    [fig3-end] minmax(var(--verticalPadding), auto)
-
-    [p4-start] minmax(0, auto)
-    [p4-end] minmax(var(--verticalPadding), auto)
-
-    [fig4-end] minmax(var(--verticalPadding), auto);
-
-  gap: 0.75rem;
-
-  max-width: 75rem;
-  margin: 0 auto;
-
-  align-items: center;
-
-  background: url(../images/lightblue_gingham.png);
-  padding: 1rem;
+  place-items: center;
+  background: #dfe9f0;
+  font-family: Georgia, serif;
 }
 
-/* Decorative elements */
-.grid::before,
-.grid::after {
-  content: "";
-  display: block;
-}
-
-.grid::before {
-  grid-column: 3 / -3;
-  grid-row: 9 / span 4;
-
-  width: 100%;
-  height: 400px;
-
+.board {
   position: relative;
-  z-index: 0;
-
-  pointer-events: none;
+  width: min(100vw, 710px);
+  aspect-ratio: 710 / 598;
+  background: url("../images/lightblue_gingham.png") repeat;
+  overflow: hidden;
+  border: 4px solid #111;
 }
 
-/* Header */
-header {
-  grid-column: 1 / -2;
-  grid-row: header;
-
-  padding: 1.5rem;
-
-  box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-
-  text-align: center;
-
-  background-color: aliceblue;
-
-  z-index: 3;
-}
-
-/* =========================
-   FIGURES
-========================= */
-
-.fig--1 {
-  grid-column: span 5 / -1;
-  grid-row: fig1;
-
-  transform: translateY(-2rem);
-}
-
-.fig--2 {
-  grid-column: 1 / span 7;
-  grid-row: fig2;
-
-  transform: translateY(-2.5rem);
-}
-
-.fig--3 {
-  grid-column: span 5 / -2;
-  grid-row: fig3;
-
-  transform: translateY(-2rem);
-}
-
-.fig--4 {
-  grid-column: 1 / span 5;
-  grid-row: fig4;
-
-  transform: translateY(-1rem);
-}
-
-.fig--4 img {
-  object-position: center;
-}
-
-/* =========================
-   TEXT BOXES
-========================= */
-
-p:first-of-type {
-  grid-column: 5 / span 2;
-  grid-row: p1;
-  justify-self: start;
-  transform: rotate(-1deg) translate(-1rem, 0.5rem);
-}
-
-p:nth-of-type(2) {
-  grid-column: span 3 / -3;
-  grid-row: p2;
-
-  transform: rotate(0.8deg) translateY(-1rem);
-}
-
-p:nth-of-type(3) {
-  grid-column: 2 / span 3;
-  grid-row: p3;
-
-  transform: rotate(-0.7deg) translate(-1rem, -0.5rem);
-
-  position: relative;
-  z-index: 5;
-}
-
-p:nth-of-type(4) {
-  grid-column: 5 / span 2;
-  grid-row: p4;
-
-  transform: rotate(0.7deg) translate(-2rem, -1rem);
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn {
-  display: block;
-  width: 100%;
-
-  padding: 3rem;
-
-  background-color: aliceblue;
-  color: black;
-
-  text-decoration: none;
-  text-align: center;
-
-  transition: all 0.3s ease;
-
-  font-size: 2.5rem;
-  line-height: 1.4;
-}
-
-.btn:hover {
-  background-color: #dfefff;
-
-  transform: scale(1.05);
-}
-
-/* Keeps projects clickable */
-p:nth-of-type(3) .btn {
-  position: relative;
+/* Title */
+.title {
+  position: absolute;
+  left: 22%;
+  top: 2.5%;
+  transform: rotate(-1deg);
+  padding: 0.45rem 1.4rem;
+  background: #fff;
+  font-family: "Schoolbell", cursive;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   z-index: 10;
 }
 
-/* =========================
-   ASPECT RATIO HELPER
-========================= */
-
-[style*="--aspect-ratio"] {
-  position: relative;
-}
-
-[style*="--aspect-ratio"]::before {
-  content: "";
-  display: block;
-
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-[style*="--aspect-ratio"] > :first-child {
+/* Labels */
+.label {
   position: absolute;
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.9rem);
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  z-index: 20;
+}
 
-  top: 0;
-  left: 0;
+.label:hover {
+  transform: scale(1.03);
+}
 
-  width: 100%;
-  height: 100%;
+/* Asset images */
+.asset {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.18));
+}
+
+/* Positions tuned to resemble the mockup */
+.asset--leadership {
+  left: -1%;
+  top: 0.5%;
+  width: 18%;
+}
+
+.label--leadership {
+  left: 0.5%;
+  top: 36%;
+  transform: rotate(-1deg);
+}
+
+.asset--star {
+  left: 17%;
+  top: 18%;
+  width: 31%;
+  transform: rotate(-7deg);
+}
+
+.label--projects {
+  left: 47%;
+  top: 17%;
+  transform: rotate(0deg);
+}
+
+.asset--projects {
+  right: 4%;
+  top: 6%;
+  width: 36%;
+}
+
+.label--art {
+  right: 2%;
+  top: 44%;
+  transform: rotate(0deg);
+}
+
+.asset--art {
+  right: 2%;
+  top: 37%;
+  width: 18%;
+}
+
+.asset--about {
+  left: 7%;
+  bottom: -2%;
+  width: 44%;
+}
+
+.label--about {
+  left: 10%;
+  bottom: 6%;
+  transform: rotate(-1deg);
+}
+
+.label--interests {
+  right: 16%;
+  bottom: 5%;
+  transform: rotate(0deg);
+}
+
+/* Make it scale down nicely on smaller screens */
+@media (max-width: 720px) {
+  .board {
+    width: 100vw;
+  }
+
+  .label {
+    padding: 0.45rem 0.7rem;
+  }
 }
