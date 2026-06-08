@@ -18,6 +18,10 @@ body {
   font-family: Georgia, serif;
 }
 
+/* =========================
+   BOARD
+========================= */
+
 .board {
   position: relative;
   width: 100vw;
@@ -26,9 +30,13 @@ body {
   overflow: hidden;
 }
 
+/* =========================
+   TITLE
+========================= */
+
 .title {
   position: absolute;
-  top: 2.2%;
+  top: 2%;
   left: 20%;
   width: 40%;
   padding: 0.7rem 1rem;
@@ -42,27 +50,46 @@ body {
   z-index: 20;
 }
 
+/* =========================
+   COMMON IMAGES
+========================= */
+
 .asset {
   position: absolute;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(
+    0 10px 10px rgba(0, 0, 0, 0.18)
+  );
 }
+
+/* =========================
+   COMMON LABELS
+========================= */
 
 .label {
   position: absolute;
   display: inline-block;
+
   padding: 0.7rem 1.15rem;
-  background: #fff;
+
+  background: white;
   color: #111;
+
   text-decoration: none;
+
   font-family: Georgia, serif;
   font-weight: 800;
   font-size: clamp(1rem, 2vw, 2rem);
+
   line-height: 1;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.18);
+
   z-index: 30;
+
   transition: transform 0.2s ease;
 }
 
@@ -70,106 +97,131 @@ body {
   transform: scale(1.05);
 }
 
-/* Leadership */
+/* =========================
+   DESKTOP LAYOUT
+========================= */
+
+/* HAND */
+
 .asset--leadership {
-  left: -1%;
-  top: 1%;
-  width: clamp(260px, 24vw, 420px);
-  transform: rotate(-10deg);
+  left: -2%;
+  top: 2%;
+
+  width: clamp(340px, 28vw, 520px);
+
+  transform: rotate(50deg);
+
   z-index: 10;
 }
 
 .label--leadership {
-  left: 1.2%;
-  top: 31%;
+  left: 1.5%;
+  top: 30%;
 }
 
-/* Star */
+/* STAR */
+
 .asset--star {
-  left: 17%;
-  top: 16%;
-  width: clamp(300px, 30vw, 520px);
+  left: 27%;
+  top: 18%;
+  width: clamp(320px, 30vw, 540px);
   transform: rotate(-8deg);
   z-index: 10;
 }
 
-/* Projects label */
+/* PROJECTS LABEL */
+
 .label--projects {
   left: 48%;
-  top: 14%;
+  top: 18%;
 }
 
-/* Art shirt */
+/* ART SHIRT */
+
 .asset--art {
-  right: 1%;
+  right: 8%;
   top: 4%;
-  width: clamp(320px, 30vw, 520px);
-  transform: rotate(-4deg);
+  width: clamp(380px, 32vw, 620px);
+  transform: rotate(-3deg);
   z-index: 11;
 }
 
 .label--art {
-  right: 1.5%;
-  top: 43%;
+  right: 5%;
+  top: 41%;
 }
 
-/* Projects / Pingu */
+/* PINGU / RECORD PLAYER */
+
 .asset--projects {
-  right: 1%;
-  top: 20%;
-  width: clamp(300px, 30vw, 560px);
-  transform: rotate(1deg);
+  right: 3%;
+  bottom: 4%;
+  width: clamp(420px, 34vw, 700px);
+
+  transform: rotate(0deg);
+
   z-index: 13;
 }
 
-/* About Me */
+/* ABOUT */
+
 .asset--about {
-  left: 8%;
+  left: 10%;
   bottom: -4%;
-  width: clamp(360px, 36vw, 620px);
-  transform: rotate(0deg);
+
+  width: clamp(360px, 34vw, 620px);
+
   z-index: 10;
 }
 
 .label--about {
-  left: 10%;
+  left: 11%;
   bottom: 7%;
 }
 
-/* Interests */
+/* INTERESTS */
+
 .label--interests {
-  right: 15%;
-  bottom: 7%;
+  right: 13%;
+  bottom: 6%;
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
+
   body {
     overflow-x: hidden;
-  }
-
-  .board {
-    width: 100vw;
-    height: 100vh;
   }
 
   .title {
     top: 2%;
     left: 16%;
     width: 68%;
+
     padding: 0.45rem 0.7rem;
+
     font-size: clamp(1.3rem, 6vw, 2rem);
   }
 
   .label {
     padding: 0.45rem 0.7rem;
-    font-size: clamp(0.95rem, 4.5vw, 1.4rem);
+
+    font-size:
+      clamp(0.95rem, 4.5vw, 1.4rem);
   }
 
+  /* HAND */
+
   .asset--leadership {
-    left: -8%;
+    left: -10%;
     top: 4%;
-    width: 42%;
-    transform: rotate(-10deg);
+
+    width: 48%;
+
+    transform: rotate(50deg);
   }
 
   .label--leadership {
@@ -177,24 +229,36 @@ body {
     top: 28%;
   }
 
+  /* STAR */
+
   .asset--star {
-    left: 24%;
+    left: 25%;
     top: 17%;
-    width: 46%;
+
+    width: 48%;
+
     transform: rotate(-6deg);
   }
 
+  /* PROJECTS */
+
   .label--projects {
     left: 48%;
-    top: 24%;
+    top: 22%;
+
     transform: translateX(-50%);
   }
 
+  /* ART */
+
   .asset--art {
-    right: 0%;
-    top: 8%;
-    width: 52%;
+    right: -3%;
+    top: 6%;
+
+    width: 60%;
+
     transform: rotate(-4deg);
+
     z-index: 11;
   }
 
@@ -203,17 +267,23 @@ body {
     top: 39%;
   }
 
+  /* PINGU */
+
   .asset--projects {
     right: 2%;
-    top: 28%;
-    width: 54%;
-    transform: rotate(1deg);
+    top: 34%;
+
+    width: 58%;
+
     z-index: 13;
   }
+
+  /* ABOUT */
 
   .asset--about {
     left: 0%;
     bottom: -2%;
+
     width: 98%;
   }
 
@@ -221,6 +291,8 @@ body {
     left: 18%;
     bottom: 5%;
   }
+
+  /* INTERESTS */
 
   .label--interests {
     right: 10%;
