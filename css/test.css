@@ -18,10 +18,6 @@ body {
   font-family: Georgia, serif;
 }
 
-/* =========================
-   FULLSCREEN BOARD
-========================= */
-
 .board {
   position: relative;
   width: 100vw;
@@ -30,13 +26,9 @@ body {
   overflow: hidden;
 }
 
-/* =========================
-   TITLE
-========================= */
-
 .title {
   position: absolute;
-  top: 2.5%;
+  top: 2.2%;
   left: 20%;
   width: 40%;
   padding: 0.7rem 1rem;
@@ -50,21 +42,12 @@ body {
   z-index: 20;
 }
 
-/* =========================
-   COMMON ASSETS
-========================= */
-
 .asset {
   position: absolute;
   display: block;
   object-fit: contain;
   filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.18));
-  z-index: 10;
 }
-
-/* =========================
-   COMMON LABELS
-========================= */
 
 .label {
   position: absolute;
@@ -87,58 +70,65 @@ body {
   transform: scale(1.05);
 }
 
-/* =========================
-   DESKTOP LAYOUT
-========================= */
-
+/* Leadership */
 .asset--leadership {
-  left: 0.5%;
-  top: 2%;
-  width: 15%;
+  left: -1%;
+  top: 1%;
+  width: clamp(260px, 24vw, 420px);
   transform: rotate(-10deg);
+  z-index: 10;
 }
 
 .label--leadership {
-  left: 3%;
-  top: 34%;
+  left: 1.2%;
+  top: 31%;
 }
 
+/* Star */
 .asset--star {
-  left: 18%;
-  top: 18%;
-  width: 22%;
+  left: 17%;
+  top: 16%;
+  width: clamp(300px, 30vw, 520px);
   transform: rotate(-8deg);
+  z-index: 10;
 }
 
+/* Projects label */
 .label--projects {
   left: 48%;
-  top: 16%;
+  top: 14%;
 }
 
-.asset--projects {
-  right: 3%;
-  top: 7%;
-  width: 30%;
-  transform: rotate(2deg);
-}
-
+/* Art shirt */
 .asset--art {
   right: 1%;
-  top: 38%;
-  width: 18%;
+  top: 4%;
+  width: clamp(320px, 30vw, 520px);
   transform: rotate(-4deg);
+  z-index: 11;
 }
 
 .label--art {
-  right: 2%;
-  top: 46%;
+  right: 1.5%;
+  top: 43%;
 }
 
+/* Projects / Pingu */
+.asset--projects {
+  right: 1%;
+  top: 20%;
+  width: clamp(300px, 30vw, 560px);
+  transform: rotate(1deg);
+  z-index: 13;
+}
+
+/* About Me */
 .asset--about {
-  left: 7%;
-  bottom: -3%;
-  width: 35%;
+  left: 8%;
+  bottom: -4%;
+  width: clamp(360px, 36vw, 620px);
   transform: rotate(0deg);
+  z-index: 10;
 }
 
 .label--about {
@@ -146,14 +136,11 @@ body {
   bottom: 7%;
 }
 
+/* Interests */
 .label--interests {
   right: 15%;
   bottom: 7%;
 }
-
-/* =========================
-   MOBILE LAYOUT
-========================= */
 
 @media (max-width: 768px) {
   body {
@@ -167,8 +154,8 @@ body {
 
   .title {
     top: 2%;
-    left: 18%;
-    width: 64%;
+    left: 16%;
+    width: 68%;
     padding: 0.45rem 0.7rem;
     font-size: clamp(1.3rem, 6vw, 2rem);
   }
@@ -178,70 +165,65 @@ body {
     font-size: clamp(0.95rem, 4.5vw, 1.4rem);
   }
 
-  /* Leadership */
   .asset--leadership {
-    left: -4%;
-    top: 7%;
-    width: 28%;
+    left: -8%;
+    top: 4%;
+    width: 42%;
     transform: rotate(-10deg);
   }
 
   .label--leadership {
-    left: 10%;
-    top: 32%;
+    left: 2%;
+    top: 28%;
   }
 
-  /* Star */
   .asset--star {
-    left: 34%;
-    top: 15%;
-    width: 34%;
+    left: 24%;
+    top: 17%;
+    width: 46%;
     transform: rotate(-6deg);
   }
 
-  /* Projects */
   .label--projects {
-    left: 47%;
+    left: 48%;
     top: 24%;
     transform: translateX(-50%);
   }
 
-  .asset--projects {
-    right: 0%;
-    top: 1%;
-    width: 42%;
-    transform: rotate(1deg);
-  }
-
-  /* Art */
   .asset--art {
-    left: 58%;
-    top: 28%;
-    width: 27%;
+    right: 0%;
+    top: 8%;
+    width: 52%;
     transform: rotate(-4deg);
+    z-index: 11;
   }
 
   .label--art {
-    left: 72%;
-    top: 40%;
-    transform: translateX(-50%);
+    right: 1%;
+    top: 39%;
   }
 
-  /* About Me */
+  .asset--projects {
+    right: 2%;
+    top: 28%;
+    width: 54%;
+    transform: rotate(1deg);
+    z-index: 13;
+  }
+
   .asset--about {
-    left: 2%;
-    bottom: 0%;
-    width: 92%;
+    left: 0%;
+    bottom: -2%;
+    width: 98%;
   }
 
   .label--about {
-    left: 22%;
+    left: 18%;
     bottom: 5%;
   }
 
-  /* Interests */
   .label--interests {
-    left: 58%;
-    bottom: 16%;
+    right: 10%;
+    bottom: 15%;
   }
 }
