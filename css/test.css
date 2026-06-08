@@ -10,249 +10,238 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 body {
-  background: #dfe5ea;
-}
-
-/* ==========================
-   FULLSCREEN STAGE
-========================== */
-
-.stage {
-  position: fixed;
-  inset: 0;
   overflow: hidden;
+  background: #dfe5ea;
+  font-family: Georgia, serif;
 }
 
-/* ==========================
-   COLLAGE BOARD
-========================== */
+/* =========================
+   FULLSCREEN BOARD
+========================= */
 
 .board {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 1200px;
-  height: 800px;
-
-  transform-origin: center center;
-
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   background: url("../images/lightblue_gingham.png") repeat;
-
-  border: 5px solid #111;
-
   overflow: hidden;
 }
 
-/* ==========================
+/* =========================
    TITLE
-========================== */
+========================= */
 
 .title {
   position: absolute;
-
-  top: 2%;
+  top: 2.5%;
   left: 20%;
-
   width: 40%;
-
-  padding: 0.75rem 1rem;
-
-  background: white;
-
+  padding: 0.7rem 1rem;
+  background: #fff;
   text-align: center;
-
   font-family: "Schoolbell", cursive;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(1.8rem, 4vw, 4rem);
   line-height: 1.05;
-
   transform: rotate(-1deg);
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-
   z-index: 20;
 }
 
-/* ==========================
-   COMMON IMAGES
-========================== */
+/* =========================
+   COMMON ASSETS
+========================= */
 
 .asset {
   position: absolute;
-
   display: block;
-
   object-fit: contain;
-
-  filter: drop-shadow(
-    0 10px 10px rgba(0, 0, 0, 0.18)
-  );
-
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.18));
   z-index: 10;
-
-  transition: transform 0.25s ease;
 }
 
-.asset:hover {
-  transform: scale(1.05);
-}
-
-/* ==========================
+/* =========================
    COMMON LABELS
-========================== */
+========================= */
 
 .label {
   position: absolute;
-
   display: inline-block;
-
-  padding: 0.75rem 1.3rem;
-
-  background: white;
-
-  color: black;
-
+  padding: 0.7rem 1.15rem;
+  background: #fff;
+  color: #111;
   text-decoration: none;
-
   font-family: Georgia, serif;
-  font-weight: 700;
-
+  font-weight: 800;
   font-size: clamp(1rem, 2vw, 2rem);
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.18);
-
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   z-index: 30;
-
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .label:hover {
   transform: scale(1.05);
 }
 
-/* ==========================
-   LEADERSHIP
-========================== */
+/* =========================
+   DESKTOP LAYOUT
+========================= */
 
 .asset--leadership {
-  left: -1%;
-  top: 1%;
-
+  left: 0.5%;
+  top: 2%;
   width: 15%;
-
   transform: rotate(-10deg);
 }
 
 .label--leadership {
-  left: 0.5%;
-  top: 35%;
+  left: 3%;
+  top: 34%;
 }
-
-/* ==========================
-   STAR
-========================== */
 
 .asset--star {
   left: 18%;
-  top: 20%;
-
+  top: 18%;
   width: 22%;
-
   transform: rotate(-8deg);
 }
 
-/* ==========================
-   PROJECTS
-========================== */
-
 .label--projects {
-  left: 47%;
-  top: 15%;
+  left: 48%;
+  top: 16%;
 }
 
 .asset--projects {
   right: 3%;
-  top: 8%;
-
+  top: 7%;
   width: 30%;
+  transform: rotate(2deg);
 }
 
-/* ==========================
-   ART
-========================== */
-
 .asset--art {
-  right: 2%;
+  right: 1%;
   top: 38%;
-
-  width: 19%;
-
+  width: 18%;
   transform: rotate(-4deg);
 }
 
 .label--art {
   right: 2%;
-  top: 47%;
+  top: 46%;
 }
 
-/* ==========================
-   ABOUT ME
-========================== */
-
 .asset--about {
-  left: 8%;
-  bottom: -4%;
-
+  left: 7%;
+  bottom: -3%;
   width: 35%;
+  transform: rotate(0deg);
 }
 
 .label--about {
-  left: 8%;
+  left: 10%;
   bottom: 7%;
 }
-
-/* ==========================
-   INTERESTS
-========================== */
 
 .label--interests {
   right: 15%;
   bottom: 7%;
 }
 
-/* ==========================
-   MOBILE TWEAKS
-========================== */
+/* =========================
+   MOBILE LAYOUT
+========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .board {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .title {
+    top: 2%;
+    left: 18%;
+    width: 64%;
+    padding: 0.45rem 0.7rem;
+    font-size: clamp(1.3rem, 6vw, 2rem);
+  }
 
   .label {
-    padding: 0.55rem 0.8rem;
+    padding: 0.45rem 0.7rem;
+    font-size: clamp(0.95rem, 4.5vw, 1.4rem);
   }
 
+  /* Leadership */
   .asset--leadership {
-    width: 18%;
+    left: -4%;
+    top: 7%;
+    width: 28%;
+    transform: rotate(-10deg);
   }
 
+  .label--leadership {
+    left: 10%;
+    top: 32%;
+  }
+
+  /* Star */
   .asset--star {
-    width: 25%;
+    left: 34%;
+    top: 15%;
+    width: 34%;
+    transform: rotate(-6deg);
+  }
+
+  /* Projects */
+  .label--projects {
+    left: 47%;
+    top: 24%;
+    transform: translateX(-50%);
   }
 
   .asset--projects {
-    width: 35%;
-  }
-
-  .asset--art {
-    width: 22%;
-  }
-
-  .asset--about {
+    right: 0%;
+    top: 1%;
     width: 42%;
+    transform: rotate(1deg);
+  }
+
+  /* Art */
+  .asset--art {
+    left: 58%;
+    top: 28%;
+    width: 27%;
+    transform: rotate(-4deg);
+  }
+
+  .label--art {
+    left: 72%;
+    top: 40%;
+    transform: translateX(-50%);
+  }
+
+  /* About Me */
+  .asset--about {
+    left: 2%;
+    bottom: 0%;
+    width: 92%;
+  }
+
+  .label--about {
+    left: 22%;
+    bottom: 5%;
+  }
+
+  /* Interests */
+  .label--interests {
+    left: 58%;
+    bottom: 16%;
   }
 }
