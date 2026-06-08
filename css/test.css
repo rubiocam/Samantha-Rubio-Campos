@@ -2,137 +2,257 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: #dfe9f0;
+  background: #dfe5ea;
 }
+
+/* ==========================
+   FULLSCREEN STAGE
+========================== */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ==========================
+   COLLAGE BOARD
+========================== */
 
 .board {
-  position: relative;
-  width: min(100vw, 710px);
-  aspect-ratio: 710 / 598;
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 1200px;
+  height: 800px;
+
+  transform-origin: center center;
+
   background: url("../images/lightblue_gingham.png") repeat;
+
+  border: 5px solid #111;
+
   overflow: hidden;
-  border: 4px solid #111;
 }
 
-/* Title */
+/* ==========================
+   TITLE
+========================== */
+
 .title {
   position: absolute;
-  left: 22%;
-  top: 2.5%;
-  transform: rotate(-2deg);
-  padding: 0.45rem 1.4rem;
+
+  top: 2%;
+  left: 20%;
+
+  width: 40%;
+
+  padding: 0.75rem 1rem;
+
   background: white;
+
+  text-align: center;
+
   font-family: "Schoolbell", cursive;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-  box-shadow: 0 4px 12px rgba(0,0,0,.18);
-  z-index: 10;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+
+  transform: rotate(-1deg);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+  z-index: 20;
 }
 
-/* Common label styling */
+/* ==========================
+   COMMON IMAGES
+========================== */
+
+.asset {
+  position: absolute;
+
+  display: block;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 10px 10px rgba(0, 0, 0, 0.18)
+  );
+
+  z-index: 10;
+
+  transition: transform 0.25s ease;
+}
+
+.asset:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================
+   COMMON LABELS
+========================== */
+
 .label {
   position: absolute;
+
   display: inline-block;
-  padding: 0.7rem 1.2rem;
+
+  padding: 0.75rem 1.3rem;
+
   background: white;
+
   color: black;
+
   text-decoration: none;
+
   font-family: Georgia, serif;
-  font-weight: bold;
-  font-size: clamp(1rem, 2vw, 1.9rem);
-  box-shadow: 0 4px 12px rgba(0,0,0,.18);
-  z-index: 20;
-  transition: .25s ease;
+  font-weight: 700;
+
+  font-size: clamp(1rem, 2vw, 2rem);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.18);
+
+  z-index: 30;
+
+  transition: transform 0.25s ease;
 }
 
 .label:hover {
   transform: scale(1.05);
 }
 
-/* Common image styling */
-.asset {
-  position: absolute;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,.18));
-  transition: .25s ease;
-}
-
-.asset:hover {
-  transform: scale(1.03);
-}
-
 /* ==========================
-   INDIVIDUAL POSITIONS
+   LEADERSHIP
 ========================== */
 
-/* Leadership */
 .asset--leadership {
-  left: -2%;
+  left: -1%;
   top: 1%;
-  width: 18%;
-  transform: rotate(-8deg) scale(1.12);
+
+  width: 15%;
+
+  transform: rotate(-10deg);
 }
 
 .label--leadership {
-  left: 1%;
-  top: 37%;
+  left: 0.5%;
+  top: 35%;
 }
 
-/* Star */
+/* ==========================
+   STAR
+========================== */
+
 .asset--star {
   left: 18%;
   top: 20%;
-  width: 30%;
-  transform: rotate(-10deg) scale(1.15);
+
+  width: 22%;
+
+  transform: rotate(-8deg);
 }
 
-/* Projects */
+/* ==========================
+   PROJECTS
+========================== */
+
 .label--projects {
-  left: 48%;
-  top: 17%;
+  left: 47%;
+  top: 15%;
 }
 
 .asset--projects {
   right: 3%;
-  top: 7%;
-  width: 34%;
-  transform: rotate(2deg) scale(1.08);
+  top: 8%;
+
+  width: 30%;
 }
 
-/* Art */
+/* ==========================
+   ART
+========================== */
+
 .asset--art {
   right: 2%;
   top: 38%;
-  width: 18%;
-  transform: rotate(-5deg) scale(1.12);
+
+  width: 19%;
+
+  transform: rotate(-4deg);
 }
 
 .label--art {
-  right: 1%;
-  top: 46%;
+  right: 2%;
+  top: 47%;
 }
 
-/* About Me */
+/* ==========================
+   ABOUT ME
+========================== */
+
 .asset--about {
-  left: 7%;
-  bottom: -2%;
-  width: 44%;
+  left: 8%;
+  bottom: -4%;
+
+  width: 35%;
 }
 
 .label--about {
-  left: 10%;
+  left: 8%;
   bottom: 7%;
 }
 
-/* Interests */
+/* ==========================
+   INTERESTS
+========================== */
+
 .label--interests {
-  right: 16%;
-  bottom: 6%;
+  right: 15%;
+  bottom: 7%;
+}
+
+/* ==========================
+   MOBILE TWEAKS
+========================== */
+
+@media (max-width: 600px) {
+
+  .label {
+    padding: 0.55rem 0.8rem;
+  }
+
+  .asset--leadership {
+    width: 18%;
+  }
+
+  .asset--star {
+    width: 25%;
+  }
+
+  .asset--projects {
+    width: 35%;
+  }
+
+  .asset--art {
+    width: 22%;
+  }
+
+  .asset--about {
+    width: 42%;
+  }
 }
