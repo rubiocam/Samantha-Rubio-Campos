@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(../images/corkboard.jpg);
+  color: white;
+  display: flex;
+  flex-direction: column; /* stack gallery + footer */
+  min-height: 100vh;
+}
+
+.gallery {
+  flex: 1; /* pushes footer down if short */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px; /* keeps gallery centered */
+  margin: auto;
+}
+
+.item {
+  background: rgba(0, 0, 0, 0.1); /* subtle background to match corkboard */
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item img {
+  width: 100%;
+  height: 180px; /* make images uniform height */
+  object-fit: cover; /* crops nicely */
+  display: block;
+}
+
+.item p {
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.item a {
+  display: block;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.coming-soon {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: white;
+}
