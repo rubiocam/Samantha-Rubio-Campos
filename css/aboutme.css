@@ -1,11 +1,15 @@
 .headshot
 {
-    width: 200px;
-    height: 200px;
+    height: 500px;
     align-items: left;
+}
+
+.name
+{
+    
 }
 
 .aboutme
 {
-    text-align: right;
+    left: 50%;
 }
