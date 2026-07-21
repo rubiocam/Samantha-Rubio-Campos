@@ -1,15 +1,24 @@
 .headshot
 {
-    height: 500px;
+    position: absolute;
+    height: clamp(250px, 30vw, 540px);
+    
     align-items: left;
 }
 
 .name
 {
-    
+    position: absolute;
+    top:clamp(3%, 30vw, 60%);
+    /* top: 60%; */
+    left: clamp(7 vw, 8%, 15vw);
 }
 
 .aboutme
 {
+    position: absolute;
+    top: 5%;
     left: 50%;
+    width: clamp(300px, 30vw, 740px);
+    font-size: clamp(100%, 1.5vw, 150%);
 }
