@@ -22,3 +22,27 @@
     width: clamp(300px, 30vw, 740px);
     font-size: clamp(100%, 1.5vw, 150%);
 }
+
+.photo1
+{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    height: clamp(200px, 20vw, 400px);
+}
+
+.photo2
+{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    height: clamp(200px, 20vw, 400px);
+}
+
+.photo3
+{
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    height: clamp(200px, 20vw, 400px);
+}
